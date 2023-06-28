@@ -8,12 +8,14 @@ import { createLogger } from 'winston';
 import * as winston from 'winston';
 import 'winston-daily-rotate-file';
 
+const timestampFormat = 'YYYY-MM-DD hh:mm:ss';
+
 const instance = createLogger({
   transports: [
     new winston.transports.Console({
       level: 'info',
       format: winston.format.combine(
-        winston.format.timestamp(),
+        winston.format.timestamp({ format: timestampFormat }),
         winston.format.simple(),
       ),
     }),
@@ -26,7 +28,7 @@ const instance = createLogger({
       maxSize: '20m',
       maxFiles: '30d',
       format: winston.format.combine(
-        winston.format.timestamp(),
+        winston.format.timestamp({ format: timestampFormat }),
         winston.format.simple(),
       ),
     }),
@@ -39,7 +41,7 @@ const instance = createLogger({
       maxSize: '20m',
       maxFiles: '30d',
       format: winston.format.combine(
-        winston.format.timestamp(),
+        winston.format.timestamp({ format: timestampFormat }),
         winston.format.simple(),
       ),
     }),
