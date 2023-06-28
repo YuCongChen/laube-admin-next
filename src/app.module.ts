@@ -1,4 +1,4 @@
-import { Global, Module } from '@nestjs/common';
+import { Global, Module, Logger } from '@nestjs/common';
 import configuration from './configuration';
 import { ConfigModule } from '@nestjs/config';
 
@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
     }),
   ],
   controllers: [],
-  providers: [],
+  providers: [Logger],
+  exports: [Logger],
 })
 export class AppModule {}
